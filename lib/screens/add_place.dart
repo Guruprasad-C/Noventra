@@ -25,28 +25,38 @@ class _AddPlaceState extends ConsumerState<AddPlace> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _titleController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Add New Place')),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: TextField(
-              controller: _titleController,
-              decoration: InputDecoration(label: Text('Title')),
-              style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: TextField(
+                controller: _titleController,
+                decoration: InputDecoration(labelText: 'Title'),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+              ),
             ),
-          ),
-          SizedBox(height: 15),
-          Center(
-            child: ElevatedButton.icon(
-              onPressed: _savePlace,
-              icon: const Icon(Icons.add),
-              label: const Text('Add Place'),
+            SizedBox(height: 15),
+            Center(
+              child: ElevatedButton.icon(
+                onPressed: _savePlace,
+                icon: const Icon(Icons.add),
+                label: const Text('Add Place'),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
