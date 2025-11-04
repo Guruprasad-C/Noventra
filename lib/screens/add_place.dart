@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sixth_app/providers/user_places.dart';
 import 'package:sixth_app/widgets/image_input.dart';
+import 'package:sixth_app/widgets/location_input.dart';
 
 class AddPlace extends ConsumerStatefulWidget {
   const AddPlace({super.key});
@@ -58,6 +59,8 @@ class _AddPlaceState extends ConsumerState<AddPlace> {
                 _onSelectedImage = image;
               },
             ),
+            const SizedBox(height: 12),
+            LocationInput(),
             const SizedBox(height: 16),
             Center(
               child: ElevatedButton.icon(
